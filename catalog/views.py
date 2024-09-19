@@ -2,9 +2,13 @@ from django.http import HttpResponse
 
 from django.shortcuts import render
 
+from catalog.models import Product
+
+
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    latest_products = Product.objects.order_by('-created_at')[:5]
+    return render(request, 'home.html', {'latest_products': latest_products})
 
 def contacts(request):
     if request.method == 'POST':
