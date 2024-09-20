@@ -1,0 +1,93 @@
+[
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "name": "Smartphone Apple iPhone 13",
+        "description": "The latest iPhone model with a powerful processor and camera.",
+        "pic": "iphone_13.jpg",
+        "category": 1,
+        "price": "750.00",
+        "created_at": "2024-09-18T21:26:31.891Z",
+        "changed_at": "2024-09-18T21:59:23.444Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+        "name": "Dell XPS 13 Laptop",
+        "description": "Lightweight and powerful laptop with 4K display.",
+        "pic": "dell_xps_13.jpg",
+        "category": 1,
+        "price": "1299.99",
+        "created_at": "2024-09-18T21:30:44.738Z",
+        "changed_at": "2024-09-18T21:30:44.738Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+        "name": "Levi's 501 Jeans",
+        "description": "Classic straight-leg jeans.",
+        "pic": "levis_501.jpg",
+        "category": 2,
+        "price": "79.99",
+        "created_at": "2024-09-18T21:32:37.962Z",
+        "changed_at": "2024-09-18T21:32:37.962Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+        "name": "The book \"1984\" by George Orwell",
+        "description": "A dystopia about a totalitarian society.",
+        "pic": "1984_book.jpg",
+        "category": 3,
+        "price": "14.99",
+        "created_at": "2024-09-18T21:44:59.117Z",
+        "changed_at": "2024-09-18T21:44:59.117Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+        "name": "The book \"The Master and Margarita\" by Mikhail Bulgakov",
+        "description": "A classic novel about a double life.",
+        "pic": "master_and_margarita_book.jpg",
+        "category": 3,
+        "price": "19.99",
+        "created_at": "2024-09-18T21:46:13.036Z",
+        "changed_at": "2024-09-18T21:46:13.036Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+        "name": "Trek Marlin 5 bike",
+        "description": "Mountain bike for beginners.",
+        "pic": "trek_marlin_5.jpg",
+        "category": 4,
+        "price": "599.99",
+        "created_at": "2024-09-18T21:49:18.846Z",
+        "changed_at": "2024-09-18T21:49:18.846Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+        "name": "Treadmill NordicTrack T6.5S",
+        "description": "Treadmill with electronic incline.",
+        "pic": "nordictrack_t6_5s.jpg",
+        "category": 4,
+        "price": "999.99",
+        "created_at": "2024-09-18T21:50:17.443Z",
+        "changed_at": "2024-09-18T21:50:17.443Z"
+    }
+}
+]
