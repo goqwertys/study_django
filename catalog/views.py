@@ -6,6 +6,10 @@ from catalog.models import Product
 
 
 # Create your views here.
+def index(request):
+    return render(request, 'base.html')
+
+
 def home(request):
     latest_products = Product.objects.order_by('-created_at')[:5]
     return render(request, 'home.html', {'latest_products': latest_products})
