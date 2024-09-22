@@ -39,7 +39,7 @@ def add_product(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('catalog:products')  # Перенаправление на страницу со списком товаров
+            return redirect('catalog:products')
     else:
         form = ProductForm()
     return render(request, 'add_product.html', {'form': form})
