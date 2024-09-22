@@ -7,29 +7,7 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
             {% for product in products %}
-            <div class="col">
-                <div class="card shadow-sm">
-                        {% if product.pic %}
-                        <img src="{{ product.pic|media_filter }}" class="card-img-top fixed-size-image">
-                        {% else %}
-                        <div class="placeholder-image">
-                            <span>{{ product.name }}</span>
-                        </div>
-                        {% endif %}
-                    <div class="card-body">
-                        <h5>{{ product.name }}</h5>
-                        <p class="card-title">{{ product.description|truncatechars:100 }}</p>
-                        <!-- Buttons and small-text -->
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <!-- My button-->
-                                <a class="btn btn-primary" href="{% url 'catalog:product_detail' product.pk %}" role="button">More</a>
-                            </div>
-                            <small class="text-muted"> {{ product.created_at }}</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                {% include 'includes/product_card.html' %}
             {% endfor %}
         </div>
         <div class="row justify-content-center mt-4">
