@@ -77,19 +77,29 @@
 
 .fixed-size-image {
   width: 100%;
-  height: 175px;
+  height: 200px;
   object-fit: cover;
   object-position: center;
 }
 
 .placeholder-image {
   width: 100%;
-  height: 200px; /* Вы можете изменить это значение, чтобы установить нужную высоту */
-  background-color: #f0f0f0; /* Цвет фона плейсхолдера */
+  height: 200px;
+  background-color: #f0f0f0;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-  color: #888; /* Цвет текста */
+  color: #888;
   text-align: center;
+}
+
+.card {
+    height: 100%; /* Убедитесь, что карточки занимают всю высоту столбца */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Распределяет пространство между элементами */
 }
