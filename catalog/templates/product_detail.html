@@ -16,10 +16,23 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text">{{ product.description }}</p>
-                    <p class="card-text">Price: {{ product.price }}</p>
                 </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        Price: {{ product.price }}
+                    </li>
+                    <li class="list-group-item">
+                        Category: {{ product.category }}
+                    </li>
+                    <li class="list-group-item">
+                        Created at {{ product.created_at }}
+                    </li>
+                    <li class="list-group-item">
+                        Changed at: {{ product.changed_at }}
+                    </li>
+                </ul>
             </div>
-            <a class="btn btn-primary" href="{% url 'catalog:products' %}" role="button">Back</a>
+            <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'catalog:products' %}" role="button">Back</a>
         </div>
     </div>
 </div>

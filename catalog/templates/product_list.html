@@ -25,12 +25,12 @@
                                 <!-- My button-->
                                 <a class="btn btn-primary" href="{% url 'catalog:product_detail' product.pk %}" role="button">More</a>
                             </div>
+                            <small class="text-muted"> {{ product.created_at|date:"d M Y"  }}</small>
                         </div>
                     </div>
                 </div>
             </div>
             {% endfor %}
-
         </div>
     </div>
 </div>
