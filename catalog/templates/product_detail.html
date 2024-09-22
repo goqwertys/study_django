@@ -25,10 +25,10 @@
                         Category: {{ product.category }}
                     </li>
                     <li class="list-group-item">
-                        Created at {{ product.created_at }}
+                        Created at {{ product.created_at|date:"d M Y" }}
                     </li>
                     <li class="list-group-item">
-                        Changed at: {{ product.changed_at }}
+                        Changed at: {{ product.changed_at|date:"d M Y" }}
                     </li>
                 </ul>
             </div>

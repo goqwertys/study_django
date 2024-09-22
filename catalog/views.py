@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse
 
 from django.shortcuts import render, get_object_or_404, redirect
@@ -9,7 +10,17 @@ from .forms import ProductForm
 # Create your views here.
 def product_list(request):
     """ Page with all products """
-    products = Product.objects.all()
+    product_list = Product.objects.all()
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(product_list, 10)
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
     context = {
         'products': products
     }
