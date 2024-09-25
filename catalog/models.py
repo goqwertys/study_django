@@ -47,4 +47,5 @@ class FeedBackMessage(models.Model):
     """ Represents Feedback Message """
     name = models.CharField(max_length=150, verbose_name='Name')
     phone = models.CharField(validators=[phone_regex], max_length=17, verbose_name='Phone number')
-    message = TextField(verbose_name='Message')
+    message = TextField(verbose_name='Message', blank=False, null=False)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Time of creation')
