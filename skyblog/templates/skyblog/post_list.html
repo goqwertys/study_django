@@ -1,12 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'catalog/base.html' %}
 {% load my_tags %}
-{% block title %}Product list{% endblock %}
+{% block title %}Posts{% endblock %}
 {% block content %}
+{% include 'skyblog/includes/skyblog_info.html' %}
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% for product in products %}
-                {% include 'includes/product_card.html' %}
+            {% for post in posts %}
+                {% include 'skyblog/includes/post_card.html' %}
             {% endfor %}
         </div>
 

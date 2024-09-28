@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'skyblog/base.html' %}
 {% load my_tags %}
 {% block title %}Product Detail{% endblock %}
 {% block content %}
@@ -6,33 +6,30 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
             <div class="card mb-3">
-                {% if product.pic %}
+                {% if post.preview_image %}
                 <img src="{{ product.pic|media_filter }}" class="card-img-top fit-cover-center" alt="Product Image">
                 {% else %}
                 <div class="placeholder-image">
-                    <span>{{ product.name }}</span>
+                    <span>{{ post.title }}</span>
                 </div>
                 {% endif %}
                 <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">{{ product.description }}</p>
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.content }}</p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        Price: {{ product.price }}
+                        Created at {{ post.created_at|date:"d M Y" }}
                     </li>
                     <li class="list-group-item">
-                        Category: {{ product.category }}
+                        Changed at: {{ post.changed_at|date:"d M Y" }}
                     </li>
-                    <li class="list-group-item">
-                        Created at {{ product.created_at|date:"d M Y" }}
-                    </li>
-                    <li class="list-group-item">
-                        Changed at: {{ product.changed_at|date:"d M Y" }}
+                    <li>
+                        Views: {{ post.views_count }}
                     </li>
                 </ul>
             </div>
-            <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'catalog:product_list' %}" role="button">Back</a>
+            <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'skyblog:post_list' %}" role="button">Back</a>
         </div>
     </div>
 </div>

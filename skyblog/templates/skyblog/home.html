@@ -1,20 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'skyblog/base.html' %}
 {% load my_tags %}
 {% block title %}Post list{% endblock %}
 {% block content %}
-{% include 'includes/skyblog_info.html' %}
+{% include 'skyblog/includes/skyblog_info.html' %}
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <!--
             {% for post in posts %}
-                {% include 'includes/product_card.html' %}
+                {% include 'skyblog/includes/post_card.html' %}
             {% endfor %}
-            -->
         </div>
         <div class="row justify-content-center mt-4">
             <div class="col-auto">
-                <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'catalog:product_list' %}" role="button">See all</a>
+                <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'skyblog:post_list' %}" role="button">See all</a>
             </div>
     </div>
     </div>

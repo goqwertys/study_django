@@ -1,0 +1,37 @@
+{% extends 'skyblog/base.html' %}
+{% block title %}New Post{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="mt-5">New Post</h1>
+    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="{{ form.title.id_for_label }}" class="form-label">Name:</label>
+        <input type="text" name="{{ form.title.name }}" id="{{ form.title.id_for_label }}" class="form-control {% if form.title.errors %}is-invalid{% endif %}" placeholder="Post title" value="{{ form.title.value|default_if_none:'' }}">
+        <div class="invalid-feedback">
+            {{ form.title.errors }}
+        </div>
+    </div>
+    <div class="form-group mt-3">
+        <label for="{{ form.content.id_for_label }}" class="form-label">Description:</label>
+        <textarea name="{{ form.content.name }}" id="{{ form.content.id_for_label }}" class="form-control form-control-lg {% if form.content.errors %}is-invalid{% endif %}" placeholder="Content..." style="height: 150px;">
+            {{ form.content.value|default_if_none:'' }}
+        </textarea>
+        <div class="invalid-feedback">
+            {{ form.content.errors }}
+        </div>
+    </div>
+    <div class="form-group mt-3">
+        <label for="{{ form.preview_image.id_for_label }}" class="form-label">Image:</label>
+        <input type="file" name="{{ form.preview_image.name }}" id="{{ form.preview_image.id_for_label }}" class="form-control {% if form.preview_image.errors %}is-invalid{% endif %}">
+        <div class="invalid-feedback">
+            {{ form.preview_image.errors }}
+        </div>
+        {% if form.instance.preview_image %}
+            <p>Current Image: <a href="{{ form.instance.preview_image.url }}" target="_blank">{{ form.instance.preview_image.name }}</a></p>
+        {% endif %}
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
+</div>
+{% endblock %}
