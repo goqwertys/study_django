@@ -2,13 +2,15 @@
 {% block title %}Delete post{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h2>Delete post</h2>
-    <p>Are you sure you want to delete "{{ post.title }}"?</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-outline-danger">Confirm</button>
-        <a href="{% url 'skyblog:post_list' %}" class="btn btn-outline-secondary">Cancel</a>
-    </form>
+<div class="container d-flex flex-column justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="row">
+        <h3>Delete post</h3>
+        <p>Are you sure you want to delete "{{ post_title }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger">Confirm</button>
+            <a href="{% url 'skyblog:post_list' %}" class="btn btn-outline-secondary">Cancel</a>
+        </form>
+    </div>
 </div>
 {% endblock %}

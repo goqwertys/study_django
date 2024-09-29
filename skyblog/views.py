@@ -1,3 +1,5 @@
+from lib2to3.fixes.fix_input import context
+
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
@@ -39,12 +41,22 @@ class CreatePostView(CreateView):
     template_name = 'skyblog/form_post.html'
     success_url = reverse_lazy('skyblog:on_moderation')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_title'] = 'New Post'
+        return context
+
 
 class EditPostView(UpdateView):
     """ Page og editing post """
     model = BlogPost
     fields = ['title', 'content', 'preview_image']
     template_name = 'skyblog/form_post.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_title'] = 'Edit Post'
+        return context
 
     def get_success_url(self):
         post = self.get_object()
@@ -75,3 +87,8 @@ class PostDeleteView(DeleteView):
     model = BlogPost
     template_name = 'skyblog/post_confirm_delete.html'
     success_url = reverse_lazy('skyblog:post_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post_title'] = self.object.title
+        return context
