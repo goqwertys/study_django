@@ -1,0 +1,44 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+{% block title %}Contacts{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row text-start">
+        {% include 'catalog/includes/contacts_table.html'%}
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Feedback</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="{{ form.name.id_for_label }}" class="form-label">Name:</label>
+                            <input type="text" name="{{ form.name.name }}" id="{{ form.name.id_for_label }}" class="form-control {% if form.name.errors %}is-invalid{% endif %}" placeholder="Enter your name">
+                            <div class="invalid-feedback">
+                                {{ form.name.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.phone.id_for_label }}" class="form-label">Phone:</label>
+                            <input type="text" name="{{ form.phone.name }}" id="{{ form.phone.id_for_label }}" class="form-control {% if form.phone.errors %}is-invalid{% endif %}" placeholder="Enter your phone number">
+                            <div class="invalid-feedback">
+                                {{ form.phone.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.message.id_for_label }}" class="form-label">Message:</label>
+                            <textarea name="{{ form.message.name }}" id="{{ form.message.id_for_label }}" class="form-control {% if form.message.errors %}is-invalid{% endif %}" rows="5" placeholder="Enter your message"></textarea>
+                            <div class="invalid-feedback">
+                                {{ form.message.errors }}
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

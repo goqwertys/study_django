@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'catalog/base.html' %}
 {% load my_tags %}
 {% block title %}Product Detail{% endblock %}
 {% block content %}
@@ -32,7 +32,7 @@
                     </li>
                 </ul>
             </div>
-            <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'catalog:products' %}" role="button">Back</a>
+            <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'catalog:product_list' %}" role="button">Back</a>
         </div>
     </div>
 </div>
