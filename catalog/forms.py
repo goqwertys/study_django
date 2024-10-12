@@ -27,3 +27,9 @@ class ProductForm(forms.ModelForm):
             if word in description.lower():
                 raise forms.ValidationError(f'The word "{word}" is not allowed in the description')
         return description
+
+    def clean_price(self):
+        price = self.cleaned_data.get('price')
+        if price <= 0:
+            raise forms.ValidationError('Please enter a price greater than zero')
+        return price
