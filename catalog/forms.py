@@ -7,12 +7,27 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ['name', 'description', 'pic', 'price']
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'form-control'}),
-            'pic': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'price': forms.NumberInput(attrs={'class': 'form-control'}),
-        }
+
+    def __init__(self, *args, **kwargs):
+        super(ProductForm, self).__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs.update({
+            'class': 'form-control',
+            'placeholder': 'Enter product name'
+        })
+        self.fields['description'].widget.attrs.update({
+            'class': 'form-control',
+            'placeholder': 'Enter a description',
+            'rows': 4
+        })
+        self.fields['pic'].widget.attrs.update({
+            'class': 'form-control',
+            'accept': 'image/*',
+            'id': 'custom_id_pic'
+        })
+        self.fields['price'].widget.attrs.update({
+            'class': 'form-control',
+            'placeholder': 'Enter product price'
+        })
 
     def clean_name(self):
         name = self.cleaned_data.get('name')
