@@ -1,0 +1,30 @@
+{% load my_tags %}
+<div class="col">
+    <div class="card shadow-sm">
+        {% if post.preview_image %}
+        <img src="{{ post.preview_image|media_filter }}" class="card-img-top fixed-size-image">
+        {% else %}
+        <div class="placeholder-image">
+            <span>{{ post.title }}</span>
+        </div>
+        {% endif %}
+        <div class="card-body">
+            <h5>{{ post.title }}</h5>
+            <p class="card-title">{{ post.content|truncatechars:100 }}</p>
+            <!-- Buttons and small-text -->
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <!-- My button-->
+                    <a class="btn btn-primary-outline" href="{% url 'skyblog:post_detail' post.pk %}" role="button">More</a>
+                    <!--
+                    <a class="btn btn-primary-outline" href="{% url 'skyblog:edit_post' post.pk %}" role="button">Edit</a>
+                    -->
+                    <!--
+                    <a class="btn btn-primary-outline" href="{% url 'skyblog:delete_post' post.pk %}" role="button">Edit</a>
+                    -->
+                </div>
+                <small class="text-muted">Views: {{ post.views_count }}</small>
+            </div>
+        </div>
+    </div>
+</div>

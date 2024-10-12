@@ -103,3 +103,9 @@
     flex-direction: column;
     justify-content: space-between; /* Распределяет пространство между элементами */
 }
+
+.post-image {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+}
