@@ -1,8 +1,7 @@
 from django import template
 
-from config import settings
-
 register = template.Library()
+
 
 @register.filter()
 def media_filter(image_field):

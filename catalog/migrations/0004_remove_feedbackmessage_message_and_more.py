@@ -18,7 +18,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='feedbackmessage',
             name='created_at',
-            field=models.DateTimeField(auto_now_add=True, default=django.utils.timezone.now, verbose_name='Time of creation'),
+            field=models.DateTimeField(
+                auto_now_add=True,
+                default=django.utils.timezone.now,
+                verbose_name='Time of creation'
+            ),
             preserve_default=False,
         ),
     ]

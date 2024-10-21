@@ -83,7 +83,7 @@ class ProductForm(StyleFormMixin, forms.ModelForm):
             try:
                 with Image.open(pic) as img:
                     img.verify()
-            except Exception as e:
+            except Exception:
                 raise ValidationError('Invalid image file.')
 
         return pic
