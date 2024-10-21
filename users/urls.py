@@ -1,7 +1,10 @@
+from sys import meta_path
+
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 
 from users.apps import UsersConfig
+from users.views import UserCreateView
 
 app_name = UsersConfig.name
 
@@ -13,4 +16,5 @@ urlpatterns = [
             next_page='/catalog/'),
          name='logout'
     ),
+    path('register', UserCreateView.as_view(), name='register')
 ]
