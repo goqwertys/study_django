@@ -1,12 +1,35 @@
 from django import forms
+from django.forms import BooleanField
 from prompt_toolkit.validation import ValidationError
 
 from .models import Product
 from PIL import Image
 
-forbidden_words = ['казино', 'биржа', 'обман', 'криптовалюта', 'дешево', 'полиция', 'крипта', 'бесплатно', 'радар']
 
-class ProductForm(forms.ModelForm):
+forbidden_words = [
+    'казино',
+    'биржа',
+    'обман',
+    'криптовалюта',
+    'дешево',
+    'полиция',
+    'крипта',
+    'бесплатно',
+    'радар'
+]
+
+
+class StyleFormMixin:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field, in self.fields.items():
+            if isinstance(field, BooleanField):
+                field.widget.attrs['class'] = 'form-check-input'
+            else:
+                field.widget.attrs['class'] = 'form-control'
+
+
+class ProductForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Product
         fields = ['name', 'description', 'pic', 'price']
@@ -14,21 +37,17 @@ class ProductForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update({
-            'class': 'form-control',
             'placeholder': 'Enter product name'
         })
         self.fields['description'].widget.attrs.update({
-            'class': 'form-control',
             'placeholder': 'Enter a description',
             'rows': 4
         })
         self.fields['pic'].widget.attrs.update({
-            'class': 'form-control',
             'accept': 'image/*',
             'id': 'custom_id_pic'
         })
         self.fields['price'].widget.attrs.update({
-            'class': 'form-control',
             'placeholder': 'Enter product price'
         })
 
