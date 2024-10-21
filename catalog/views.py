@@ -1,8 +1,8 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, TemplateView
 
+from catalog.forms import ProductForm
 from catalog.models import Product, FeedBackMessage
-
 
 
 class ProductListView(ListView):
@@ -42,9 +42,10 @@ class FeedBackMessageSent(TemplateView):
 
 class AddProduct(CreateView):
     model = Product
-    fields = ['name', 'description', 'pic', 'price']
+    form_class = ProductForm
     template_name = 'catalog/add_product.html'
     success_url = reverse_lazy('catalog:product_created')
+
 
 class ProductCreated(TemplateView):
     template_name = 'catalog/product_created.html'

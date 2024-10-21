@@ -1,6 +1,3 @@
-from lib2to3.fixes.fix_input import context
-
-from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
 

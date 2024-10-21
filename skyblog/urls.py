@@ -1,9 +1,7 @@
-from tkinter.font import names
-
 from django.urls import path
 from skyblog.apps import SkyblogConfig
 
-from skyblog.views import HomePostListView, BaseView, PostListView, CreatePostView, EditPostView, BlogPostDetailView, \
+from skyblog.views import HomePostListView, PostListView, CreatePostView, EditPostView, BlogPostDetailView, \
     OnModerationView, PostDeleteView
 
 app_name = SkyblogConfig.name

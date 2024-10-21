@@ -16,7 +16,16 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=150, verbose_name='Name')),
-                ('phone', models.CharField(max_length=17, validators=[django.core.validators.RegexValidator(message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.", regex='^(\\+?\\d{1,3})?(\\d{10})$')], verbose_name='Phone number')),
+                ('phone', models.CharField(
+                    max_length=17,
+                    validators=[
+                        django.core.validators.RegexValidator(
+                            message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.",
+                            regex='^(\\+?\\d{1,3})?(\\d{10})$'
+                        )
+                    ],
+                    verbose_name='Phone number'
+                )),
                 ('message', models.TextField(verbose_name='Message')),
             ],
         ),

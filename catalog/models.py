@@ -36,6 +36,7 @@ class Product(models.Model):
         verbose_name_plural = 'products'
         ordering = ['-created_at']
 
+
 # Validator
 phone_regex = RegexValidator(
     regex=r'^(\+?\d{1,3})?(\d{10})$',
