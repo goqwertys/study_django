@@ -3,7 +3,7 @@ from django.db import models
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 
-# Create your models here.
+
 class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True, verbose_name='email')

@@ -2,7 +2,7 @@ import secrets
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView
 
@@ -10,7 +10,7 @@ from users.forms import UserRegisterForm, UserProfileForm
 from users.models import User
 from config.settings import EMAIL_HOST_USER
 
-# Create your views here.
+
 class UserCreateView(CreateView):
     model = User
     form_class = UserRegisterForm
@@ -33,6 +33,7 @@ class UserCreateView(CreateView):
             recipient_list=[user.email]
         )
         return super().form_valid(form)
+
 
 def email_verification(request, token):
     user = get_object_or_404(User, token=token)
