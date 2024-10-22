@@ -11,6 +11,7 @@
                     <li><a href="{% url 'catalog:home' %}" class="btn">Home</a></li>
                     <li><a href="{% url 'skyblog:home' %}" class="btn">Blog</a></li>
                     {% if user.is_authenticated %}
+                    <li><a href="{% url 'users:profile_edit' %}" class="btn">Edit Profile</a></li>
                     <li>
                         <form method="post" action="{% url 'users:logout' %}">
                             {% csrf_token %}
