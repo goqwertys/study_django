@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, TemplateView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -31,7 +32,7 @@ class PostListView(ListView):
         return BlogPost.objects.filter(is_published=True)
 
 
-class CreatePostView(CreateView):
+class CreatePostView(LoginRequiredMixin, CreateView):
     """ Page for creating a post """
     model = BlogPost
     fields = ['title', 'content', 'preview_image']
@@ -44,7 +45,7 @@ class CreatePostView(CreateView):
         return context
 
 
-class EditPostView(UpdateView):
+class EditPostView(LoginRequiredMixin, UpdateView):
     """ Page og editing post """
     model = BlogPost
     fields = ['title', 'content', 'preview_image']
@@ -79,7 +80,7 @@ class BlogPostDetailView(DetailView):
         return obj
 
 
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin, DeleteView):
     """ Page for deleting post """
     model = BlogPost
     template_name = 'skyblog/post_confirm_delete.html'

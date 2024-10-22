@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, TemplateView
 
@@ -28,7 +29,7 @@ class HomeProductListView(ListView):
         return Product.objects.all()[:5]
 
 
-class ContactsCreateView(CreateView):
+class ContactsCreateView(LoginRequiredMixin, CreateView):
     """ Page for Contacts with Feedback message feature """
     model = FeedBackMessage
     fields = ['name', 'phone', 'message']
@@ -40,7 +41,7 @@ class FeedBackMessageSent(TemplateView):
     template_name = 'catalog/feedback_success.html'
 
 
-class AddProduct(CreateView):
+class AddProduct(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/add_product.html'
