@@ -1,10 +1,11 @@
 from sys import meta_path
+from tkinter.font import names
 
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 
 from users.apps import UsersConfig
-from users.views import UserCreateView
+from users.views import UserCreateView, email_verification
 
 app_name = UsersConfig.name
 
@@ -16,5 +17,6 @@ urlpatterns = [
             next_page='/catalog/'),
          name='logout'
     ),
-    path('register', UserCreateView.as_view(), name='register')
+    path('register', UserCreateView.as_view(), name='register'),
+    path('email-confirm/<str:token>/', email_verification, name='email-confirm')
 ]
