@@ -13,10 +13,14 @@ psycopg2-binary = "^2.9.9"
 pillow = "^10.4.0"
 ipython = "^8.27.0"
 django-extensions = "^3.2.3"
+django-phonenumber-field = "^8.0.0"
+phonenumbers = "^8.13.47"
+django-countries = "^7.6.1"
 
 
 [tool.poetry.group.lint.dependencies]
 flake8 = "^7.1.1"
+black = "^24.10.0"
 
 [build-system]
 requires = ["poetry-core"]

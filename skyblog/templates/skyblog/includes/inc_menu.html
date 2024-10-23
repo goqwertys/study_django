@@ -8,9 +8,21 @@
         <div class="col-sm-4 offset-md-1 py-4">
           <h4>Menu</h4>
           <ul class="list-unstyled">
-            <li><a href="{% url 'skyblog:home' %}" class="text-white">Home</a></li>
-            <li><a href="#" class="text-white">Log in</a></li>
-            <li><a href="#" class="text-white">Contects</a></li>
+            <li><a href="{% url 'skyblog:home' %}" class="btn">Home</a></li>
+            <li><a href="{% url 'catalog:home' %}" class="btn">Skyshop</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'users:profile_edit' %}" class="btn">Edit Profile</a></li>
+            <li>
+                <form method="post" action="{% url 'users:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">Logout</button>
+                </form>
+            </li>
+            {% else %}
+            <li><a href="{% url 'users:login' %}" class="btn">Login</a></li>
+            <li><a href="{% url 'users:register' %}" class="btn">Sign up</a></li>
+            {% endif %}
+            <li><a href="#" class="btn">Contacts</a></li>
           </ul>
         </div>
       </div>

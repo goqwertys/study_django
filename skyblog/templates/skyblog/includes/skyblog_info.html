@@ -4,10 +4,13 @@
             <h1 class="fw-light">Skyblog</h1>
             <p class="lead text-body-secondary">This product collection, created for a Django project, includes a variety of categories, from electronics to clothing. Each product contains detailed information, allowing you to test and demonstrate the functionality of your web application.</p>
             <p>
+                {% if user.is_authenticated %}
                 <a href="{% url 'skyblog:new_post' %}" class="btn btn-primary my-2">New Post</a>
-                <!--
+                {% else %}
+                <a href="{% url 'users:register' %}" class="btn btn-primary my-2">Sign in</a>
+                <a href="{% url 'users:login' %}" class="btn btn-primary my-2">Login</a>
+                {% endif %}
                 <a href="{% url 'catalog:contacts' %}" class="btn btn-secondary my-2">Contacts</a>
-                -->
             </p>
         </div>
     </div>
