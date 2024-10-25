@@ -49,6 +49,9 @@ class Product(models.Model):
         verbose_name = 'product'
         verbose_name_plural = 'products'
         ordering = ['-created_at']
+        permissions = [
+            ('can_unpublish_product', 'Can unpublish product'),
+        ]
 
 
 # Validator
