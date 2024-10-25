@@ -28,6 +28,20 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Time of creation')
     changed_at = models.DateTimeField(auto_now=True, verbose_name='Time of changing')
 
+    STATUS_CHOICES = [
+        ('DR', 'Draft'),
+        ('PD', 'Pending'),
+        ('PU', 'Published'),
+        ('RJ', 'Rejected'),
+    ]
+
+    status = models.CharField(
+        max_length=2,
+        choices=STATUS_CHOICES,
+        default='DR',
+        verbose_name='Publication_Status'
+    )
+
     def __str__(self):
         return self.name
 
