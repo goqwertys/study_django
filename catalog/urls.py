@@ -1,8 +1,10 @@
+from tkinter.font import names
+
 from django.urls import path
 from catalog.apps import CatalogConfig
 
 from catalog.views import ProductListView, HomeProductListView, ProductDetailView, \
-    ContactsCreateView, FeedBackMessageSent, AddProduct, ProductCreated
+    ContactsCreateView, FeedBackMessageSent, AddProduct, ProductCreated, unpublish_product, delete_product
 
 app_name = CatalogConfig.name
 
@@ -14,4 +16,6 @@ urlpatterns = [
     path('contacts/success/', FeedBackMessageSent.as_view(), name='feedback_success'),
     path('add_product/', AddProduct.as_view(), name='add_product'),
     path('product_created/', ProductCreated.as_view(), name='product_created'),
+    path('product/<int:pk>/unpublish', unpublish_product, name='unpublish_product'),
+    path('product/<int:pk>/delete', delete_product, name='delete_product'),
 ]
