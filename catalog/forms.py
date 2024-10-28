@@ -32,7 +32,7 @@ class StyleFormMixin:
 class ProductForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'pic', 'price']
+        fields = ['name', 'description', 'pic', 'category', 'price']
 
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)

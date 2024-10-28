@@ -33,6 +33,21 @@
                 </ul>
             </div>
             <a class="btn btn-outline-primary btn-lg btn-block" href="{% url 'catalog:product_list' %}" role="button">Back</a>
+            {% if perms.catalog.can_unpublish_product and product.status == 'PU' %}
+                <a class="btn btn-outline-secondary btn-lg btn-block" href="{% url 'catalog:unpublish_product' product.pk %}">
+                    Unpublish
+                </a>
+            {% endif %}
+            {% if product.owner == user %}
+                <a class="btn btn-outline-secondary btn-lg btn-block" href="{% url 'catalog:edit_product' product.pk%}">
+                    Edit
+                </a>
+            {% endif %}
+            {% if perms.catalog.delete_product %}
+                <a class="btn btn-outline-danger btn-lg btn-block" href="{% url 'catalog:delete_product' product.pk %}">
+                    Delete
+                </a>
+            {% endif %}
         </div>
     </div>
 </div>
