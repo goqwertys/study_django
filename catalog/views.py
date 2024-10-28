@@ -50,7 +50,7 @@ class CategoryProduct(ListView):
 
         category_id = self.kwargs['category_id']
 
-        context['products'] = ProductService.filtered_by_category(category_id)
+        context['products'] = ProductService.filtered_by_category(category_id).filter(status='PU')
         context['category_name'] = ProductService.get_category_name(category_id)
         return context
 

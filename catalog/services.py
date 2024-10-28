@@ -23,7 +23,15 @@ class ProductService:
     @staticmethod
     def filtered_by_category(category_id):
         """Returns products in the searched category """
-        return Product.objects.filter(category_id=category_id)
+        cache_key = f'products_category_{category_id}'
+
+        products = cache.get(cache_key)
+
+        if not products:
+            products = Product.objects.filter(category_id=category_id)
+            cache.set(cache_key, products)
+
+        return products
 
     @staticmethod
     def get_category_name(category_id):
