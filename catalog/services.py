@@ -10,6 +10,7 @@ class ProductService:
 
     @staticmethod
     def get_products_from_cache():
+        """ Returns product list from cache if it there. """
         if not CACHE_ENABLED:
             return Product.objects.filter(status='PU')
         key = 'products'
@@ -21,9 +22,8 @@ class ProductService:
         return products
 
     @staticmethod
-    def get_products_from_category(category_id):
+    def filtered_by_category(category_id):
         return Product.objects.filter(category_id=category_id)
-
 
     @staticmethod
     def get_category_name(category_id):
