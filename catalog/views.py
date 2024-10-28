@@ -1,5 +1,3 @@
-from keyword import kwlist
-
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import get_object_or_404, redirect
@@ -8,7 +6,6 @@ from django.views.decorators.cache import cache_page
 from django.views.generic import ListView, DetailView, CreateView, TemplateView, UpdateView
 from django.contrib import messages
 from django.utils.decorators import method_decorator
-from unicodedata import category
 
 from catalog.forms import ProductForm
 from catalog.models import Product, FeedBackMessage

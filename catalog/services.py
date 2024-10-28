@@ -4,7 +4,6 @@ from catalog.models import Product, Category
 from config.settings import CACHE_ENABLED
 
 
-
 class ProductService:
     """Service class for .models.Product"""
 
@@ -23,9 +22,11 @@ class ProductService:
 
     @staticmethod
     def filtered_by_category(category_id):
+        """Returns products in the searched category """
         return Product.objects.filter(category_id=category_id)
 
     @staticmethod
     def get_category_name(category_id):
+        """ Returns the name of the searched category """
         category = Category.objects.get(id=category_id)
         return category.name
