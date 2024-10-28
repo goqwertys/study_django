@@ -9,6 +9,7 @@ from django.utils.decorators import method_decorator
 
 from catalog.forms import ProductForm
 from catalog.models import Product, FeedBackMessage
+from catalog.services import ProductService
 
 
 @permission_required('catalog.can_unpublish_product')
@@ -35,7 +36,7 @@ class ProductListView(ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        return Product.objects.filter(status='PU')
+        return ProductService.get_products_from_cache().filter(status='PU')
 
 
 @method_decorator(cache_page(60 * 15), name='dispatch')
