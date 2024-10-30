@@ -1,8 +1,9 @@
 {% extends 'catalog/base.html' %}
 {% load my_tags %}
-{% block title %}Product list{% endblock %}
+{% block title %}Product in {{ category_name }}{% endblock %}
 {% block content %}
 <div class="album py-5 bg-body-tertiary">
+    <h2 class="text-center mt-5 mb-5">Product in {{ category_name }}</h2>
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {% for product in products %}
